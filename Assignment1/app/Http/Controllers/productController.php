@@ -12,8 +12,9 @@ class productController extends Controller
         return view('addProduct');
     }
     function product_list(){
-        
-        return view('productList');
+        $products = product::all();
+
+        return view('productList')->with('products', $products);
     }
     function added(Request $req){
 
@@ -31,5 +32,10 @@ class productController extends Controller
         $pd->Price = $req->price;
         $pd->save();
         return  "Product Added";
+    }
+
+    function productDetail($id, $name, $price){
+
+        return "<h1>Product ID: $id <br> Product Name: $name <br> Product Price: $price </h1>" ;
     }
 }

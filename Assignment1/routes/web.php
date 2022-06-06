@@ -19,3 +19,5 @@ Route::get('/add', [productController::class, 'add_product'])->name('add.product
 Route::post('/add', [productController::class, 'added'])->name('submit.product');
 
 Route::get('/product', [productController::class, 'product_list'])->name('product.list');
+
+Route::get('/product/details/{id}/{name}/{price}', [productController::class, 'productDetail'])->name('product.detail');
