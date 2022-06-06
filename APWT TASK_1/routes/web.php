@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\serviceController;
+use App\Http\Controllers\teamsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,14 @@ use App\Http\Controllers\serviceController;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 })->name('homePage');
 
-Route::get('/teams', function(){return view('ourTeams');})->name('ourTeams');
+Route::get('/teams', [teamsController::class,'details'])->name('ourTeams');
+
+//Route::get('/teams/{id}', function($id){return view('ourTeams');})->name('ourTeams');
+
 Route::get('/contact', function(){return view('contactUs');})->name('contactUs');
 Route::get('/about', function(){return view('aboutUs');})->name('aboutUs');
 
